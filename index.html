@@ -1132,7 +1132,7 @@
           <button class="weapon-button" type="button" data-weapon="cluster" aria-pressed="false">
             <span class="weapon-name">RACIMO</span>
             <span class="weapon-count" data-count="cluster">02</span>
-            <span class="weapon-meta">tres cabezas</span>
+            <span class="weapon-meta">cinco cabezas</span>
           </button>
           <button class="weapon-button" type="button" data-weapon="big" aria-pressed="false">
             <span class="weapon-name">GRANDE</span>
@@ -1222,7 +1222,7 @@
           craterRadius: 32,
           speed: 1,
           duration: 520,
-          splitCount: 3,
+          splitCount: 5,
           splitDelay: 0.36
         },
         big: {
@@ -1469,11 +1469,11 @@
         for (let x = 0; x <= world.width; x += 1) {
           const progress = x / Math.max(world.width, 1);
           const hills =
-            Math.sin(progress * Math.PI * 2.1 + primaryA) * world.height * 0.115 +
-            Math.sin(progress * Math.PI * 5.2 + primaryB) * world.height * 0.065 +
-            Math.sin(progress * Math.PI * 10.8 + primaryC) * world.height * 0.027;
-          const shelf = Math.sin(progress * Math.PI * 1.15 - 0.5) * world.height * 0.058;
-          terrain[x] = clamp(base + hills + shelf, world.height * 0.32, world.height * 0.86);
+            Math.sin(progress * Math.PI * 2.1 + primaryA) * world.height * 0.13 +
+            Math.sin(progress * Math.PI * 5.2 + primaryB) * world.height * 0.074 +
+            Math.sin(progress * Math.PI * 10.8 + primaryC) * world.height * 0.031;
+          const shelf = Math.sin(progress * Math.PI * 1.15 - 0.5) * world.height * 0.067;
+          terrain[x] = clamp(base + hills + shelf, world.height * 0.29, world.height * 0.89);
         }
 
         return terrain;
@@ -2052,7 +2052,7 @@
           return;
         }
         const spread = Math.max(72, Math.abs(projectile.vx) * 0.19);
-        for (const offset of [-1, 0, 1]) {
+        for (const offset of [-1, -0.5, 0, 0.5, 1]) {
           game.projectiles.push({
             x: projectile.x,
             y: projectile.y,
